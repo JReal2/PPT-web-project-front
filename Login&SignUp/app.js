@@ -2,6 +2,7 @@ const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container");
 const signUpForm = document.querySelector('.sign-up-form');
+const signInForm = document.querySelector('.sign-in-form');
 
 sign_up_btn.addEventListener("click", () => {
   container.classList.add("sign-up-mode");
@@ -12,7 +13,7 @@ sign_in_btn.addEventListener("click", () => {
 });
 
 // onclick 함수 정의
-function signUp(form)
+function signUp()
 {
     const name = signUpForm.querySelector('input[type="text"]').value;
     const email = signUpForm.querySelector('input[type="email"]').value;
@@ -44,6 +45,33 @@ function signUp(form)
             }
             else {
                 alert("Existed email or under 6 letters password.")
+            }
+        }
+    }
+    xhr.send(data); //Json형식의 data를 포함하여 요청 전송
+}
+
+function login()
+{
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    data = JSON.stringify({
+        email: email,
+        password: password
+    });
+    console.log(data)
+    var xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
+    xhr.open("POST", 'http://localhost:8080'+'/login', true); //요청을 보낼 방식, 주소, 비동기 여부 설정
+    xhr.setRequestHeader('Content-Type', 'application/json'); //요청 해더에 컨텐츠 타입 Json으로 사전 정의
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === xhr.DONE) {
+            if (xhr.status === 200) { //연결 성공시
+                alert("success");
+                location.href='index.html';                                                             
+            }
+            else {
+                alert("회원을 찾을수 없습니다")
             }
         }
     }
