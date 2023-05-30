@@ -44,7 +44,7 @@ function signUp()
                 location.href='index.html';                                                             
             }
             else {
-                alert("Existed email or under 6 letters password.")
+                alert("Fail");
             }
         }
     }
