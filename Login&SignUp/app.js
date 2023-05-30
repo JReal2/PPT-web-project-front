@@ -66,9 +66,9 @@ function login()
     xhr.setRequestHeader('Content-Type', 'application/json'); //요청 해더에 컨텐츠 타입 Json으로 사전 정의
     xhr.onreadystatechange = function () {
         if (xhr.readyState === xhr.DONE) {
+            console.log(this.response)
             if (xhr.status === 200) { //연결 성공시
-                alert("success");
-                location.href='index.html';                                                             
+                alert("success");                                                            
             }
             else {
                 alert("회원을 찾을수 없습니다")
