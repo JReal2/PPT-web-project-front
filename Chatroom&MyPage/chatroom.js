@@ -1,4 +1,4 @@
-const $address = 'ec2-54-180-147-190.ap-northeast-2.compute.amazonaws.com:8080'//나중에 만약 서버를 배포하게된다면 바뀌게될수도있음
+const $address = 'ec2-54-180-147-190.ap-northeast-2.compute.amazonaws.com:8080'//배퍼한 서버
 
 mentoringID = localStorage.getItem('mentoringId'); //localStorage.getItem('mentroingId'); // 아마 이 전 화면들 어딘가에서 localStorage에 setItem으로 서버에서 받아온 mentoring의 Id를 저장했을거임 그걸 꺼내쓰는것
 accessToken = localStorage.getItem('accessToken'); //로그인하면 받는 accessToken 

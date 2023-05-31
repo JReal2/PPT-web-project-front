@@ -6,11 +6,11 @@ const signUpForm = document.querySelector('.sign-up-form');
 const signInForm = document.querySelector('.sign-in-form');
 
 sign_up_btn.addEventListener("click", () => {
-  container.classList.add("sign-up-mode");
+   container.classList.add("sign-up-mode");
 });
 
 sign_in_btn.addEventListener("click", () => {
-  container.classList.remove("sign-up-mode");
+   container.classList.remove("sign-up-mode");
 });
 
 // onclick 함수 정의
@@ -42,11 +42,6 @@ function signUp()
         if (xhr.readyState === xhr.DONE) {
             if (xhr.status === 200) { //연결 성공시
                 alert("success");
-                var data=JSON.parse(xhr.response);
-
-                localStorage.setItem('accessToken',data.accessToken) //요청 응답으로 받은 json데이터를 파싱하여 브라우저 localStorage에 저장, localStorage는 창이이동해도 계속해서 가지고있을수있는 브라우저 임시 저장소
-                localStorage.setItem('username',data.name)
-                localStorage.setItem('email',email)                                                           
             }
             else {
                 alert("Fail");
@@ -73,7 +68,13 @@ function login()
         if (xhr.readyState === xhr.DONE) {
             console.log(this.response)
             if (xhr.status === 200) { //연결 성공시
-                alert("success");                                                            
+                alert("success");
+                var data=JSON.parse(xhr.response);
+                localStorage.setItem('accessToken',data.accessToken) //요청 응답으로 받은 json데이터를 파싱하여 브라우저 localStorage에 저장, localStorage는 창이이동해도 계속해서 가지고있을수있는 브라우저 임시 저장소
+                localStorage.setItem('username',data.name)
+                localStorage.setItem('email',email)    
+                
+                location.href = "../Chatroom&MyPage/chatroom.html";
             }
             else {
                 alert("회원을 찾을수 없습니다")
