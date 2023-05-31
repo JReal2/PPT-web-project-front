@@ -1,3 +1,4 @@
+const $address = 'http://ec2-54-180-147-190.ap-northeast-2.compute.amazonaws.com:8080'//배포한 서버
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container");
@@ -35,13 +36,17 @@ function signUp()
     });
     console.log(data)
     var xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
-    xhr.open("POST", 'http://localhost:8080'+'/members/new', true); //요청을 보낼 방식, 주소, 비동기 여부 설정
+    xhr.open("POST", $address +'/members/new', true); //요청을 보낼 방식, 주소, 비동기 여부 설정
     xhr.setRequestHeader('Content-Type', 'application/json'); //요청 해더에 컨텐츠 타입 Json으로 사전 정의
     xhr.onreadystatechange = function () {
         if (xhr.readyState === xhr.DONE) {
             if (xhr.status === 200) { //연결 성공시
                 alert("success");
-                location.href='index.html';                                                             
+                var data=JSON.parse(xhr.response);
+
+                localStorage.setItem('accessToken',data.accessToken) //요청 응답으로 받은 json데이터를 파싱하여 브라우저 localStorage에 저장, localStorage는 창이이동해도 계속해서 가지고있을수있는 브라우저 임시 저장소
+                localStorage.setItem('username',data.name)
+                localStorage.setItem('email',email)                                                           
             }
             else {
                 alert("Fail");
@@ -62,7 +67,7 @@ function login()
     });
     console.log(data)
     var xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
-    xhr.open("POST", 'http://localhost:8080'+'/login', true); //요청을 보낼 방식, 주소, 비동기 여부 설정
+    xhr.open("POST", $address+'/login', true); //요청을 보낼 방식, 주소, 비동기 여부 설정
     xhr.setRequestHeader('Content-Type', 'application/json'); //요청 해더에 컨텐츠 타입 Json으로 사전 정의
     xhr.onreadystatechange = function () {
         if (xhr.readyState === xhr.DONE) {

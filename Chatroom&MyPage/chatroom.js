@@ -1,14 +1,54 @@
-const $address = 'http://localhost:8080'//나중에 만약 서버를 배포하게된다면 바뀌게될수도있음
+const $address = 'ec2-54-180-147-190.ap-northeast-2.compute.amazonaws.com:8080'//나중에 만약 서버를 배포하게된다면 바뀌게될수도있음
 
+mentoringID = localStorage.getItem('mentoringId'); //localStorage.getItem('mentroingId'); // 아마 이 전 화면들 어딘가에서 localStorage에 setItem으로 서버에서 받아온 mentoring의 Id를 저장했을거임 그걸 꺼내쓰는것
+accessToken = localStorage.getItem('accessToken'); //로그인하면 받는 accessToken 
+userID = localStorage.getItem('userId');//localStorage.getItem('userId');
 
 
 //TO DO 웹소켓 연결 이건 내가함
+var socket = new SockJS('http://localhost:8080/websocket');
+        
+var stompClient = Stomp.over(socket);
+
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+
+            stompClient.subscribe('/sub/chat/mentoring/' + mentoringID, function (message) {
+                var receivedMessage = JSON.parse(message.body);
+                showMessage(receivedMessage);
+            });
+        });
+
+        function sendMessage() {
+            var messageInput = $('#text').val();
+            var message = {
+                mentoringId: mentoringID,
+                userId: userID,
+                message: messageInput,
+                createTime: new Date().toISOString()
+            };
+            stompClient.send("/pub/chat/message", {}, JSON.stringify(message));
+        }
+
+        function showMessage(message) {
+            var messageContainer = $('#chatroom');
+            var messageElement = $('<div class="message">');
+
+            if (message.userId === 1) {
+                messageElement.addClass('sent');
+            } else {
+                messageElement.addClass('received');
+            }
+
+            var messageTextElement = $('<div class="message-text">').text(message.message);
+
+            messageElement.append(messageTextElement);
+            messageContainer.append(messageElement);
+
+        }
 
 function getChatHistory()
 {
-    mentoringId = localStorage.getItem('mentroingId'); // 아마 이 전 화면들 어딘가에서 localStorage에 setItem으로 서버에서 받아온 mentoring의 Id를 저장했을거임 그걸 꺼내쓰는것
-    accessToken = localStorage.getItem('accessToken'); //로그인하면 받는 accessToken 
-
 
     console.log(data)
     var xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성

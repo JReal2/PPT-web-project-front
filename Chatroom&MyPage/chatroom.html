@@ -101,6 +101,27 @@
             border-radius:100%;
             padding:none;
         }
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            margin: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .sent {
+            align-self: flex-start;
+            background-color: #e6f7ff;
+        }
+
+        .received {
+            align-self: flex-end;
+            background-color: #f2f2f2;
+        }
     </style>
     <meta charset="utf-8">
     <meta charset="utf-8">
@@ -109,6 +130,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </head>
 <body>
     <div class="container-fluid content">
@@ -139,10 +163,11 @@
                         <input class = "send text-center" id="text"></input>
                     </div>
                     <div class="col-sm-1">
-                        <button class = "send" id="sendBtn"><img style="height:30px; width:30px; padding-right: 2px;" src="send.png"></button>
+                        <button class = "send" id="sendBtn" onclick="sendMessage()"><img style="height:30px; width:30px; padding-right: 2px;" src="send.png"></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="chatroom.js"></script>
 </body>
