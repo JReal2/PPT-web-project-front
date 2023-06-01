@@ -74,7 +74,7 @@ function login()
                 localStorage.setItem('username',data.name)
                 localStorage.setItem('email',email)    
                 
-                location.href = "../Chatroom&MyPage/chatroom.html";
+                location.href = "메인화면";
             }
             else {
                 alert("회원을 찾을수 없습니다")

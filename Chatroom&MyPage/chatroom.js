@@ -6,7 +6,7 @@ userID = localStorage.getItem('userId');//localStorage.getItem('userId');
 
 
 //TO DO 웹소켓 연결 이건 내가함
-var socket = new SockJS('http://localhost:8080/websocket');
+var socket = new SockJS( $address + '/websocket');
         
 var stompClient = Stomp.over(socket);
 
