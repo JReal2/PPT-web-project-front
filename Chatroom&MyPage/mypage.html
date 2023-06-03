@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <style>
+        body {
+            background-color:#F5F8FF !important
+        }
+        .header {
+            margin-top:1%;
+            height:8%;
+        }
+        .content {
+            margin-top:1%;
+            height:100%;
+        }
+        .menu {
+            border-radius:10px;
+            height:83vh;
+            background-color:#6172F3;
+            padding:none;
+            color:white;
+        }
+        .menu p {
+            margin-top:80px;
+            font-size:20px;
+            font-weight:bold;
+        }
+        .menu hr {
+            margin-top:80px;
+        }
+        .menu div p {
+            font-size:25px;
+            margin:60px 0;
+        }
+        .menu div hr {
+            border:1.5px solid;
+            margin:50px 0 0 0;
+        }
+        .modify {
+            margin-left:10%;
+            width:80%;
+        }
+        #app {
+            font-weight:500;
+        }
+        h3 {
+            font-size:40px;
+            font-weight:bolder;
+            margin-bottom:40px;
+        }
+        .techs{
+            padding-top:5px;
+            margin-top:30px;
+            height:250px;
+            border-radius:10px;
+            background-color: #a4adee;
+        }
+        .applist{
+            margin-top:30px;
+        }
+        .application .applist > p {
+            margin:0;
+            text-align:center;
+            font-weight:bold;
+        }
+        .applist p {
+            margin-top:0.5%;
+            float:left;
+            margin-left:15%;
+            margin-right:5%;
+            font-size:20px;
+            display:inline;
+        }
+        .applist input {
+            margin-left:6%;
+            margin-right:1%;
+            margin-top:5px;
+            height:25px;
+            float:left;
+        }
+        .applist hr {
+            margin-left:2.5%;
+            width:95%;
+        }
+
+        input[type="button"] {
+            background-color: #8098F9;
+            padding:5px 15px;
+            border-radius:10px;
+            color:white;
+            border:none;
+        }
+        #modifybtn {
+            margin-top:70px;
+            padding:10px 20px;
+        }
+        h4 {
+            text-align: left;
+            margin-left:15%;
+            margin-top:70px;
+            font-weight:600;
+        }
+        .mentorapp, .menteeapp{
+            display:flex;  
+        }
+        .techs hr{
+            margin-top:0;
+        }
+        .editinfo input[type="text"] {
+            width:70%;
+            height:30px;
+        }
+        input[type="text"] {
+            margin-top:5px;
+            border-radius:5px;
+            background-color: #d8dffa;
+            border: solid 1px #8098F9;
+            margin-right:10px;
+        }
+        input[type="text"]:focus {
+            outline:none;
+        }
+        .application {
+            display:none;
+            margin-left:10%;
+            width:80%;
+        }
+        .techs .appbar p {
+            display:absolute;
+            float:left;
+            margin-right:8%;
+            font-size:100%;
+        }
+        #appbtns p {
+            margin-left:3%;
+            margin-right:5%;
+        }
+
+        @media (max-width:1195px) {
+            .applist input {
+            margin-left:2%;
+            margin-right:5%;
+            margin-top:5px;
+            height:25px;
+            display:inline;
+         }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" style="margin-left:50px; height:120px;">
+    </div>
+    <div class="container-fluid content text-center">
+        <div class="row">
+            <div class="col-sm-2 text-center menu">
+                <div>
+                    <p>My Page</p>
+                    <hr>
+                </div>
+                <p id="edit">개인정보 수정</p>
+                <hr>
+                <p id="app">멘토링 신청 관리</p>
+                <hr>
+            </div>
+            <div class="col-sm-10">
+                <!-- 개인정보 수정 창 -->
+                <div class = "modify">
+                    <h3>개인정보 수정</h3>
+                    <div class = "editinfo">
+                        <h4>이메일</h4>
+                        <input type="text" id="email">
+                        <h4>소속</h4>
+                        <input type="text" id="company">
+                        <h4>자신있는 기술</h4>
+                        <input type="text" id="skill">
+                        <h4>배우고 싶은 기술</h4>
+                        <input type="text" id="interestskill"><br>
+                        <input type="button" value="수정" id="modifybtn" onclick="modifyInfo()">
+                    </div>
+                </div>
+
+                <!-- 멘토링 신청 관리 창 -->
+                <div class = "application">
+                    <h3>멘토링 신청 관리</h3>
+                    <div class="applist">
+                        <p>받은 신청</p><br>
+                        <div class="text-center techs">
+                            <!-- 인터페이스 예시 -->
+                            <div class="mentorapp">
+                                <p>Mentee</p>
+                                <p>JavaScript</p>       
+                                <input class="text-center" type="button" value="신청서">                         
+                                <input class="text-center" type="button" value="수락">
+                                <input class="text-center" type="button" value="거절"><br>                               
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="applist">
+                        <p>보낸 신청</p><br>
+                        <div class="text-center techs">
+                            <!-- 인터페이스 예시 -->
+                            <div class="menteeapp">
+                                <p>Mentor</p>
+                                <p>Spring</p>
+                                <p>100,000</p>
+                                <input class="text-center" type="button" value="철회"><br>    
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="mypage.js"></script>
+</body>
