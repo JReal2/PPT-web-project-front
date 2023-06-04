@@ -12,6 +12,7 @@ var socket = new SockJS('http://ec2-54-180-147-190.ap-northeast-2.compute.amazon
 var stompClient = Stomp.over(socket);
 
         stompClient.connect({}, function (frame) {
+            getChatHistory();
             console.log('Connected: ' + frame);
 
             stompClient.subscribe('/sub/chat/mentoring/' + mentoringID, function (message) {
@@ -23,7 +24,7 @@ var stompClient = Stomp.over(socket);
         function sendMessage() {
             var messageInput = $('#text').val();
             if(messageInput) {
-            var message = {
+            var message = { 
                 mentoringId: 3,
                 userId: 32,
                 message: messageInput,
@@ -64,7 +65,6 @@ function getChatHistory()
         if (xhr.readyState === xhr.DONE) {
             if (xhr.status === 200) { //연결 성공시
                 console.log(this.response);
-                alert("success");
                 data = JSON.parse(xhr.responseText);//json파싱                                      
             }
             else {//실패했다는것은 엑세스토큰이 만료되었거나 비정상적인 접근이라는것
@@ -96,16 +96,16 @@ function makeChatDiv(userId, message, createTime) {
     msg.textContent = message;
     var img = document.createElement("img");
 
-    if(true) {
-        img.attr('src', 'mentee.png');
+    if(userId == 32) {
+        img.setAttribute('src', 'mentee.png');
         msgDiv.classList.add("sent");
     } else { //이런식으로 구분하면되지않을까함
-        img.attr('src', 'mentor.png');
-        msgDiv.classList.add("sent");
+        img.setAttribute('src', 'mentor.png');
+        msgDiv.classList.add("received");
     }
 
     msgDiv.appendChild(img);
     msgDiv.appendChild(msg);
-    chatroom.appendChild(msgDiv);
+    chatroom.prepend(msgDiv);
     // 본인들이 만든 html에 맞게 알아서 채워넣으셈
 }

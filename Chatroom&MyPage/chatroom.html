@@ -45,10 +45,9 @@
             width: 95%;
             border-radius: 10px;
             padding:20px 10px;
-            overflow-y:scroll; 
-            display: flex;
+            display:flex;
             flex-direction: column-reverse;
-            align-items:end;
+            overflow-y:scroll; 
         }  
         
         .footer {
@@ -81,17 +80,16 @@
             padding:none;
         }
 
-        .message-container {
-            display: flex;
-            flex-direction: column;
-        }
-
         .msg {
             padding:5px 15px;
             background-color: #D1D5E8;
             border-radius: 10px;
             font-size:20px;
             max-width: 700px;
+        }
+        #chatroom div {
+            height:40px;
+            margin:15px;
         }
         #chatroom img {
             height:40px;
@@ -130,15 +128,9 @@
             font-size:10px;
         }
 
-        .message {
-            margin: 10px;
-            padding: 5px;
-        }
 
-        .sent {
-            float:right;
-            width:100%;
-        }
+
+
         
     </style>
     <meta charset="utf-8">
@@ -175,7 +167,7 @@
             </div>
             <div class="col-sm-9 bg-2">
                 <div id="chatroom">
-                                     
+ 
                 </div>
                     <div class="row footer">
                         <div class="col-sm-11">

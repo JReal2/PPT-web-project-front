@@ -38,7 +38,7 @@
             margin-top:80px;
         }
         .menu div p {
-            font-size:25px;
+            font-size:30px;
             margin:60px 0;
         }
         .menu div hr {
@@ -81,8 +81,6 @@
             display:inline;
         }
         .applist input {
-            margin-left:6%;
-            margin-right:1%;
             margin-top:5px;
             height:25px;
             float:left;
@@ -110,7 +108,9 @@
             font-weight:600;
         }
         .mentorapp, .menteeapp{
-            display:flex;  
+            display:flex;
+            margin-left:2%;
+            width:96%;  
         }
         .techs hr{
             margin-top:0;
@@ -118,6 +118,7 @@
         .editinfo input[type="text"] {
             width:70%;
             height:30px;
+            padding-left:10px;
         }
         input[type="text"] {
             margin-top:5px;
@@ -144,7 +145,9 @@
             margin-left:3%;
             margin-right:5%;
         }
-
+        .row div {
+           align-content: center;
+        }
         @media (max-width:1195px) {
             .applist input {
             margin-left:2%;
@@ -178,7 +181,7 @@
                     <h3>개인정보 수정</h3>
                     <div class = "editinfo">
                         <h4>이메일</h4>
-                        <input type="text" id="email">
+                        <input type="text" id="email" placeholder="example@gmail.com">
                         <h4>소속</h4>
                         <input type="text" id="company">
                         <h4>자신있는 기술</h4>
@@ -196,12 +199,27 @@
                         <p>받은 신청</p><br>
                         <div class="text-center techs">
                             <!-- 인터페이스 예시 -->
-                            <div class="mentorapp">
-                                <p>Mentee</p>
-                                <p>JavaScript</p>       
-                                <input class="text-center" type="button" value="신청서">                         
+                            <div class="text-center row mentorapp">
+                                <div class="col-sm-3">
+                                    <p>멘티명</p>
+                                    <p>Mentee</p>
+                                </div>
+                                <div class="col-sm-3">  
+                                    <p>기술명</p>                      
+                                    <p>JavaScript</p>  
+                                </div>
+                                <div class="col-sm-2">  
+                                    <p>신청서</p>  
+                                <input class="text-center" type="button" value="신청서">    
+                                </div> 
+                                <div class="col-sm-2">  
+                                    <p>수락</p>                    
                                 <input class="text-center" type="button" value="수락">
-                                <input class="text-center" type="button" value="거절"><br>                               
+                                </div>
+                                <div class="col-sm-2">  
+                                    <p>거절</p>
+                                <input class="text-center" type="button" value="거절">
+                                </div>                               
                             </div>
                             <hr>
                         </div>
@@ -210,11 +228,23 @@
                         <p>보낸 신청</p><br>
                         <div class="text-center techs">
                             <!-- 인터페이스 예시 -->
-                            <div class="menteeapp">
+                            <div class="text-center row menteeapp">
+                            <div class="col-sm-3">
+                                <p>멘토명</p>
                                 <p>Mentor</p>
-                                <p>Spring</p>
-                                <p>100,000</p>
-                                <input class="text-center" type="button" value="철회"><br>    
+                            </div>
+                            <div class="col-sm-4">
+                                <p>기술명</p>                        
+                                <p>Spring</p>  
+                            </div>
+                            <div class="col-sm-4">    
+                                <p>제안 금액</p>
+                                <p>100,000</p>    
+                            </div> 
+                            <div class="col-sm-1">       
+                                <p>철회</p>               
+                                <input class="text-center" type="button" value="철회">
+                            </div>   
                             </div>
                             <hr>
                         </div>
