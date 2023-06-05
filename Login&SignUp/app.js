@@ -42,6 +42,7 @@ function signUp()
         if (xhr.readyState === xhr.DONE) {
             if (xhr.status === 200) { //연결 성공시
                 alert("success");
+                location.href="index.html"
             }
             else {
                 alert("Fail");

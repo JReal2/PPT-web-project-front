@@ -1,12 +1,12 @@
 const $address = 'ec2-54-180-147-190.ap-northeast-2.compute.amazonaws.com:8080'//배퍼한 서버
 
-mentoringID = localStorage.getItem('mentoringId'); //localStorage.getItem('mentroingId'); // 아마 이 전 화면들 어딘가에서 localStorage에 setItem으로 서버에서 받아온 mentoring의 Id를 저장했을거임 그걸 꺼내쓰는것
+mentoringID = 1; //localStorage.getItem('mentroingId'); // 아마 이 전 화면들 어딘가에서 localStorage에 setItem으로 서버에서 받아온 mentoring의 Id를 저장했을거임 그걸 꺼내쓰는것
 accessToken = localStorage.getItem('accessToken'); //로그인하면 받는 accessToken 
-userID = localStorage.getItem('userId');//localStorage.getItem('userId');
+userID = 1;//localStorage.getItem('userId');
 
 
 //TO DO 웹소켓 연결 이건 내가함
-var socket = new SockJS( $address + '/websocket');
+var socket = new SockJS('http://ec2-54-180-147-190.ap-northeast-2.compute.amazonaws.com:8080/websocket');
         
 var stompClient = Stomp.over(socket);
 
