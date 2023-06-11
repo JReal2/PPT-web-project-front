@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+
+    </script>
+    <style>
+        body {
+            background-color: #F5F8FF !important;
+        }
+
+        .header {
+            margin-top: 1%;
+            height: 8%;
+        }
+
+        .content {
+            margin-top: 1%;
+        }
+
+        .bg-2 {
+            text-align: center;
+        }
+
+        .info {
+            margin-left: 5%;
+            padding-top: 40px;
+            border-radius: 10px;
+            width: 90%;
+            background-color: #6172F3;
+            height: 780px;
+        }
+
+        .category {
+            font-weight: bold;
+            font-size: 20px !important;
+        }
+
+        .info p {
+            color: #E0EAFF;
+            margin-bottom: 35px;
+            font-size: 20px;
+        }
+
+        .info hr {
+            width: 60%;
+            margin-bottom: 70px;
+        }
+
+        #chatroom {
+            background-color: #a5b6fd;
+            height: 650px;
+            margin-left: 2%;
+            width: 95%;
+            border-radius: 10px;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column-reverse;
+            overflow-y: scroll;
+        }
+
+        .footer {
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .send {
+            border: none;
+            color: black;
+        }
+
+        #text {
+            margin-left:2%;
+            resize: none;
+            background-color: #d8dffa;
+            border: solid 1px #8098F9;
+            border-radius:10px;
+            width: 95%;
+            height: 60px;
+        }
+
+        #text:focus {
+            outline: none;
+            border: solid 1px #8098F9;
+        }
+
+        #sendBtn {
+            background-color: #8098F9;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            padding: none;
+        }
+
+        .msg {
+            padding: 5px 15px;
+            background-color: #D1D5E8;
+            border-radius: 10px;
+            font-size: 20px;
+            max-width: 700px;
+            white-space: pre-line;
+        }
+
+        #chatroom div {
+            height: 40px;
+            margin: 15px;
+        }
+
+        #chatroom img {
+            height: 40px;
+            width: 40px;
+        }
+
+        .time {
+            margin-top: 25px;
+            font-size: 10px;
+        }
+
+        .sent .msg {
+            display: inline;
+            float: right;
+            margin-right: 15px;
+        }
+
+        .sent img {
+            float: right;
+            margin-right: 10px;
+        }
+
+        .sent .time {
+            float: right;
+            margin-right: 5px;
+        }
+
+        .received .msg {
+            float: left;
+            margin-left: 15px;
+            display: inline;
+        }
+
+        .received img {
+            float: left;
+            margin-left: 10px;
+        }
+
+        .received .time {
+            float: left;
+            margin-left: 5px;
+            margin-top: 25px;
+            font-size: 10px;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+
+<body>
+    <div class="text-center header">
+        <a href="mentoring.html"><img src="logo.png" style="margin-left:50px; height:120px;" alt="PPT Logo"></a>
+    </div>
+    <div class="container-fluid content">
+        <div class="row">
+            <div class="col-sm-3 bg-1">
+                <div class="info text-center">
+                    <p style="font-size:30px; font-weight:bolder;">Mentoring Information</p>
+                    <hr style="width:80%; border:1.5px solid #E0EAFF">
+                    <p class="category">Mentor Name</p>
+                    <p id="mentorName"></p>
+                    <hr>
+                    <p class="category">Mentee Name</p>
+                    <p id="menteeName"></p>
+                    <hr>
+                    <p class="category">Time</p>
+                    <p id="time">1 : 38 : 13</p>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-sm-9 bg-2">
+                <div id="chatroom">
+
+                </div>
+                <div class="row footer">
+                    <div class="col-sm-11">
+                        <textarea class="send text-center" placeholder="메시지를 입력하세요" id="text" name="message"></textarea>
+                    </div>
+                    <div class="col-sm-1">
+                        <button class="send" id="sendBtn" onclick="sendMessage()"><img
+                                style="height:30px; width:30px; padding-right: 3px;" src="send.png"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="chatroom.js"></script>
+</body>
+
+</html>

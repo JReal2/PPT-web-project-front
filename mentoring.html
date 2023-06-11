@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mentoring</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/052d40e84a.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    
+</head>
+
+
+
+<body>
+    <div class=""></div>
+    <nav class="navbar navbar-default" style="background-color: transparent; border:none;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="mentoring.html"><img src="logo.png" alt="no logo" height="100px" style="margin-top:10px"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">LOGIN</a></li>
+                    <li><a href="mypage.html">MY PAGE</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="wrapper">
+        <div class="cols cols0">
+            <span class="topline">Hello</span>
+            <h1>I'm <br><span class="multiText">Coder</span></h1>
+        </div>
+        <div class="cols cols1">
+            <div class="imgbox">
+                <img src="./img/main.svg" alt="" width="600px" height="400px">
+            </div>
+        </div>
+    </div>
+    <div class="search">
+				<input type="text" id="learnSkill" placeholder="Please enter the skills you want to learn">
+                <input type="text" id="mentorCompany" placeholder="Please enter the skills you want to learn">
+			<button type="button" class="btn btn-primary" onclick="getMentors()">검색</button>
+    </div>
+    <!-- 첫번째 목록 -->
+    <div id="mentor">
+        <div class="slide-container swiper">
+            <div class="slide-content" id="list1" >
+                <div id="wrapper" class="card-wrapper swiper-wrapper">
+                    
+                </div>
+            </div>
+            <div class="swiper-pagination" id="btn1"></div>
+            <div class="swiper-button-next" id="btnN1"></div>
+            <div class="swiper-button-prev" id="btnP1"></div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script id="jsc" src="js/script1.js"></script>
+<script src="mentoring.js"></script>
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+<script>
+    var typingEffect = new Typed(".multiText", {
+        strings : ["web developer", "infra engineer", "designer"],
+        loop: true,
+        typeSpeed : 100,
+        backSpeed : 80,
+        backDelay : 1500
+    })
+</script>
+</html>

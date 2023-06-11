@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #F5F8FF !important
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-top: 20px;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        li {
+            font-size: 20px;
+            font-weight: bolder;
+        }
+
+        .navbar {
+            width: 100%;
+            margin: 0 0 0px 0 !important;
+        }
+
+        .navbar button {
+            margin-top: 30px;
+        }
+
+        .nav {
+            margin-top: 30px;
+        }
+
+        li a {
+            display: block;
+            color: #6172f3;
+            text-align: center;
+            padding: 14px 25px;
+            text-decoration: none;
+        }
+
+        .header {
+            margin-top: 1%;
+            height: 8%;
+        }
+
+        .content {
+            margin-top: 1%;
+            height: 100%;
+        }
+
+        .menu {
+            border-radius: 10px;
+            height: 83vh;
+            background-color: #6172F3;
+            padding: none;
+            color: white;
+        }
+
+        .menu p {
+            margin-top: 80px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .menu hr {
+            margin-top: 80px;
+        }
+
+        .menu div p {
+            font-size: 30px;
+            margin: 60px 0;
+        }
+
+        .menu div hr {
+            border: 1.5px solid;
+            margin: 50px 0 0 0;
+        }
+
+        .modify {
+            margin-left: 10%;
+            width: 80%;
+        }
+
+        #app {
+            font-weight: 500;
+        }
+
+        #mentoringmenu {
+            font-weight:500;
+        }
+
+        h3 {
+            font-size: 40px;
+            font-weight: bolder;
+            margin-bottom: 40px;
+        }
+
+        .techs {
+            padding-top: 5px;
+            margin-top: 30px;
+            height: 250px;
+            border-radius: 10px;
+            background-color: rgb(233, 233, 233);;
+        }
+
+        .applist {
+            margin-top: 30px;
+        }
+
+        .application .applist>p {
+            margin: 0;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .mentoring .applist>p {
+            margin: 0;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .applist p {
+            margin-top: 0.5%;
+            float: left;
+            margin-left: 15%;
+            margin-right: 5%;
+            font-size: 20px;
+            display: inline;
+        }
+
+        .applist input {
+            height: 25px;
+            padding: 10px;
+            font-size: 13px;
+        }
+
+        .applist hr {
+            margin-left: 2.5%;
+            width: 95%;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th {
+            text-align: center;
+            padding-bottom: 5px;
+        }
+
+        td {
+            padding-top: 5px;
+            font-size: 20px;
+        }
+
+        input[type="button"] {
+            background-color: #8098F9;
+            padding: 5px 15px;
+            border-radius: 10px;
+            color: white;
+            border: none;
+        }
+
+        #modifybtn {
+            margin-top: 70px;
+            padding: 10px 20px;
+        }
+
+        h4 {
+            text-align: left;
+            margin-left: 15%;
+            margin-top: 70px;
+            font-weight: 600;
+        }
+
+        .techs hr {
+            margin-top: 0;
+        }
+
+        .editinfo input[type="text"] {
+            border: 0;
+            width: 70%;
+            height: 40px;
+            padding-left: 10px;
+            background-color: rgb(233, 233, 233);
+        }
+
+        input[type="text"] {
+            margin-top: 5px;
+            border-radius: 5px;
+            background-color: #d8dffa;
+            margin-right: 10px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+        }
+
+        .application {
+            display: none;
+            margin-left: 10%;
+            width: 80%;
+        }
+
+        .mentoring {
+            display: none;
+            margin-left: 10%;
+            width: 80%;
+        }
+
+
+        #appbtns p {
+            margin-left: 3%;
+            margin-right: 5%;
+        }
+
+        .appbar {
+            font-size: 15px !important;
+        }
+
+        @media (max-width:1195px) {
+            .applist input {
+                margin-left: 2%;
+                margin-right: 5%;
+                margin-top: 5px;
+                height: 25px;
+                display: inline;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default" style="background-color: transparent; border:none;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="mentoring.html"><img src="logo.png" alt="no logo" height="100px" style="margin-top:10px"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">LOGIN</a></li>
+                    <li><a href="mypage.html">MY PAGE</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid content text-center">
+        <div class="row">
+            <div class="col-sm-2 text-center menu">
+                <div>
+                    <p>My Page</p>
+                    <hr>
+                </div>
+                <p id="edit">Modify Information</p>
+                <hr>
+                <p id="app">Manage Application</p>
+                <hr>
+                <p id="mentoringmenu">Manage Mentoring</p>
+                <hr>
+            </div>
+            <div class="col-sm-10">
+                <!-- 개인정보 수정 창 -->
+                <div class="modify">
+                    <h3>Modify Information</h3>
+                    <div class="editinfo">
+                        <h4>Email</h4>
+                        <input type="text" id="email">
+                        <h4>Company</h4>
+                        <input type="text" id="company">
+                        <h4>Skill</h4>
+                        <input type="text" id="skill">
+                        <h4>Interest Skill</h4>
+                        <input type="text" id="interestskill"><br>
+                        <input type="button" value="수정" id="modifybtn" onclick="modifyInfo()">
+                    </div>
+                </div>
+
+                <!-- 멘토링 신청 관리 창 -->
+                <div class="application">
+                    <h3>Manage Application</h3>
+                    <div class="applist">
+                        <p>Received Application</p><br>
+                        <div class="text-center techs">
+                            <table id="mentorapp" border="0">
+                                <thead>
+                                    <tr style="border-bottom:0.5px solid rgb(105, 105, 105);">
+                                        <th>Date</th>
+                                        <th>Mentee Name</th>
+                                        <th>Application</th>
+                                        <th>Accept</th>
+                                        <th>Refuse</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="receivedlist">
+                                    <!-- 인터페이스 예시 -->
+                                    <!-- <tr>
+                                        <td>2023/06/11</td>
+                                        <td>Mentee</td>
+                                        <td><input class="text-center" type="button" value="신청서"></td>
+                                        <td><input class="text-center" type="button" value="수락"></td>
+                                        <td><input class="text-center" type="button" value="거절"></td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="applist">
+                        <p>Sent Application</p><br>
+                        <div class="text-center techs">
+                            <table id="menteeapp" border="0">
+                                <thead>
+                                    <tr style="border-bottom:0.5px solid rgb(105, 105, 105);">
+                                        <th>Date</th>
+                                        <th>Mentor Name</th>
+                                        <th>Price</th>
+                                        <th>Cancel</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sentlist">
+                                    <!-- 인터페이스 예시 -->
+                                    <!-- <tr>
+                                         <td>2023/06/11</td>
+                                        <td>Mentor</td>
+                                        <td>100,000</td>
+                                        <td><input class="text-center" type="button" value="철회"
+                                                onclick="getApplicationSent()"></td> 
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 멘토링 관리 창 -->
+                <div class="mentoring">
+                    <h3>Manage Mentoring</h3>
+                    <div class="applist">
+                        <p>Ongoing Mentoring</p><br>
+                        <div class="text-center techs">
+                            <table id="teaching" border="0">
+                                <thead>
+                                    <tr style="border-bottom:0.5px solid rgb(105, 105, 105);">
+                                        <th>Title</th>
+                                        <th>Mentee Name</th>
+                                        <th>Chat</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="receivedlist">
+                                    <!-- 인터페이스 예시 -->
+                                    <!-- <tr>
+                                        <td>2023/06/11</td>
+                                        <td>Mentee</td>
+                                        <td><input class="text-center" type="button" value="신청서"></td>
+                                        <td><input class="text-center" type="button" value="수락"></td>
+                                        <td><input class="text-center" type="button" value="거절"></td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="applist">
+                        <p>Receiving Mentoring</p><br>
+                        <div class="text-center techs">
+                            <table id="learning" border="0">
+                                <thead>
+                                    <tr style="border-bottom:0.5px solid rgb(105, 105, 105);">
+                                        <th>Title</th>
+                                        <th>Mentor Name</th>
+                                        <th>Chat</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sentlist">
+                                    <!-- 인터페이스 예시 -->
+                                    <!-- <tr>
+                                         <td>2023/06/11</td>
+                                        <td>Mentor</td>
+                                        <td>100,000</td>
+                                        <td><input class="text-center" type="button" value="철회"
+                                                onclick="getApplicationSent()"></td> 
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="mypage.js"></script>
+</body>
+
+</html>

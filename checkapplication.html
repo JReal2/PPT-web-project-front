@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+        <style>
+            body {
+            background-color:#F5F8FF
+            }
+            .contents {
+                width:60%;
+                margin:2% 20%;
+            }
+            #motivation {
+                width:100vh;
+                height:12vh;
+                overflow-y:scroll; 
+            }
+            #price {
+                width:50%;
+                margin-left:25%;
+                height:6vh;
+            }
+            .header p {
+                margin:20px 0;
+                font-size:30px;
+                font-weight:bold;
+            }
+            p {
+                font-size:20px;
+                font-weight:550;
+            }
+            input[type="button"] {
+            background-color: #8098F9;
+            padding:15px 20px;
+            border-radius:10px;
+            font-size:22px;
+            color:white;
+            border:none;
+            }
+            .contents textarea {
+            resize: none;
+            display:flex;
+            margin:10px 0 25px 0;
+            border-radius:5px;
+            background-color: #d8dffa;
+            border: solid 1px #8098F9;
+            margin-right:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid text-center header">
+            <p>Programming Personal Training Application</p>
+        </div>
+        <div class="container-fluid contents text-center">
+            <p>Motivation</p>
+            <textarea id="motivation" disabled></textarea>
+            <p>Price</p>
+            <textarea id="price" disabled></textarea><br>
+            <input type="button" value="Done" id="applicate" onclick="apply()">
+        </div>
+        <script src="checkapplication.js"></script>
+    </body>
+
+</html>
