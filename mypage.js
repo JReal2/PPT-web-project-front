@@ -56,7 +56,7 @@ function getApplicationReceived()
             }
             else {//실패했다는것은 엑세스토큰이 만료되었거나 비정상적인 접근이라는것
                 localStorage.clear();// 저장소를 비우고 로그인화면으로 이동
-                location.href='./index.html';
+                //location.href='./index.html';
             }
         }
     }
@@ -104,6 +104,7 @@ function makeReceivedDiv(date, menteeName, id) {
 
     acceptbtn.onclick = function() {
         agree(id);
+        location.reload();
     }
 
     var td5 = document.createElement("td");
@@ -171,7 +172,7 @@ function getApplicationSent()
             }
             else {//실패했다는것은 엑세스토큰이 만료되었거나 비정상적인 접근이라는것
                 localStorage.clear();// 저장소를 비우고 로그인화면으로 이동
-                location.href='./index.html';
+                //location.href='./index.html';
             }
         }
     }
@@ -287,7 +288,7 @@ function getMentoringsAsMentor()
 
 function makeMentorDiv(title, menteeName, id) {
     var table = document.getElementById("teaching");
-    var list = document.getElementById("receivedlist");
+    var list = document.getElementById("Mreceivedlist");
     var tr = document.createElement("tr"); // tr 요소를 생성합니다
  
     var td2 = document.createElement("td");
@@ -352,7 +353,7 @@ function getMentoringsAsMentee()
 
 function makeMenteeDiv(title, mentorName, id) {
     var table = document.getElementById("learning");
-    var list = document.getElementById("sentlist");
+    var list = document.getElementById("Msentlist");
     var tr = document.createElement("tr"); // tr 요소를 생성합니다
 
     var td2 = document.createElement("td");

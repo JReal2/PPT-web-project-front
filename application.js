@@ -24,7 +24,8 @@ function apply()
     xhr.onreadystatechange = function () { 
         if (xhr.readyState === xhr.DONE) {
             if (xhr.status === 200) { //연결 성공시
-                data = JSON.parse(xhr.responseText);//json파싱                                      
+                data = JSON.parse(xhr.responseText);//json파싱
+                window.close();                                      
             }
             else {//실패했다는것은 엑세스토큰이 만료되었거나 비정상적인 접근이라는것
                 localStorage.clear();// 저장소를 비우고 로그인화면으로 이동
@@ -33,7 +34,6 @@ function apply()
         }
     }
     xhr.send(JSON.stringify(jsonData)); //Json형식의 data를 포함하여 요청 전송, 이 경우 클라이언트에서 전송하는 데이터는 없음
-    window.close();
 
 }
 
