@@ -243,8 +243,7 @@ function modifyInfo()
     xhr.onreadystatechange = function () {
         if (xhr.readyState === xhr.DONE) { 
             if (xhr.status === 200) { //연결 성공시
-                console.log(this.response);
-                data = JSON.parse(xhr.responseText);//json파싱                                      
+                console.log(this.response);                                  
             }
             else {//실패했다는것은 엑세스토큰이 만료되었거나 비정상적인 접근이라는것
                 localStorage.clear();// 저장소를 비우고 로그인화면으로 이동
