@@ -33,5 +33,7 @@ function apply()
         }
     }
     xhr.send(JSON.stringify(jsonData)); //Json형식의 data를 포함하여 요청 전송, 이 경우 클라이언트에서 전송하는 데이터는 없음
+    window.close();
+
 }
 

@@ -69,8 +69,8 @@ $(function() {
 });
 
 function information() {
-    document.getElementById("mentorName").innerHTML = menteeName;
-    document.getElementById("menteeName").innerHTML = mentorName;
+    document.getElementById("mentorName").innerHTML = mentorName;
+    document.getElementById("menteeName").innerHTML = menteeName;
 }
 
 function getChatHistory()
