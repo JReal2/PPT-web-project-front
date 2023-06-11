@@ -19,7 +19,6 @@ function checkApplication()
     xhr.onreadystatechange = function () { 
         if (xhr.readyState === xhr.DONE) {
             if (xhr.status === 200) { //연결 성공시
-                alert("success");
                 data = JSON.parse(xhr.responseText);//json파싱                                      
             }
             // else {//실패했다는것은 엑세스토큰이 만료되었거나 비정상적인 접근이라는것

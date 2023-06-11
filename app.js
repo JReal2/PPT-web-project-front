@@ -40,8 +40,7 @@ function signUp()
     xhr.setRequestHeader('Content-Type', 'application/json'); //요청 해더에 컨텐츠 타입 Json으로 사전 정의
     xhr.onreadystatechange = function () {
         if (xhr.readyState === xhr.DONE) {
-            if (xhr.status === 200) { //연결 성공시
-                alert("success");                                                        
+            if (xhr.status === 200) { //연결 성공시                                                       
                 location.href="index.html"
             }
             else {
@@ -69,8 +68,6 @@ function login()
         if (xhr.readyState === xhr.DONE) {
             console.log(this.response)
             if (xhr.status === 200) { //연결 성공시
-
-                alert("success");
                 var data2=JSON.parse(xhr.response);
                 localStorage.setItem('accessToken',data2.token) //요청 응답으로 받은 json데이터를 파싱하여 브라우저 localStorage에 저장, localStorage는 창이이동해도 계속해서 가지고있을수있는 브라우저 임시 저장소
                 localStorage.setItem('username',data2.name)
